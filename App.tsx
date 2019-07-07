@@ -1,23 +1,17 @@
 import React from "react";
-import { createAppContainer } from "react-navigation";
-import { ThemeProvider } from "react-native-elements";
 
-import MainNavigator from "./src/navigations/main.navigations";
+import { createAppContainer } from "react-navigation";
+
+import MainNavigator from "./src/screens/main.navigations";
+import LayoutContainer from "./src/components/layout/layout.container";
 
 const AppContainer = createAppContainer(MainNavigator);
 
-const theme = {
-  colors: {
-    primary: "#673AB7",
-    secondary: "#536DFE"
-  }
-};
-
 const App: React.FC = () => {
   return (
-    <ThemeProvider theme={theme}>
+    <LayoutContainer>
       <AppContainer />
-    </ThemeProvider>
+    </LayoutContainer>
   );
 };
 
