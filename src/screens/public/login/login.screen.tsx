@@ -18,13 +18,14 @@ const LoginScreen: React.FC<LoginScreenProps> = props => {
 
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
-      <View style={styles.background}>
-        <ViewAnimatedFade style={styles.form}>
+      <ViewAnimatedFade style={styles.background}>
+        <View style={styles.form}>
           <Image
             style={styles.logo}
             source={require("../../../styles/images/logo.png")}
           />
           <Input
+            inputContainerStyle={styles.inputTextContainerStyle}
             containerStyle={styles.input}
             labelStyle={styles.inputLabelStyle}
             inputStyle={styles.inputTextStyleStyle}
@@ -32,6 +33,7 @@ const LoginScreen: React.FC<LoginScreenProps> = props => {
             shake={true}
           />
           <Input
+            inputContainerStyle={styles.inputTextContainerStyle}
             secureTextEntry={true}
             labelStyle={styles.inputLabelStyle}
             containerStyle={styles.input}
@@ -48,8 +50,8 @@ const LoginScreen: React.FC<LoginScreenProps> = props => {
             buttonStyle={styles.buttonInside}
             titleStyle={styles.buttonTitle}
           />
-        </ViewAnimatedFade>
-      </View>
+        </View>
+      </ViewAnimatedFade>
     </KeyboardAvoidingView>
   );
 };

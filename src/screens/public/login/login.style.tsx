@@ -18,11 +18,13 @@ export default StyleSheet.create({
     ...layoutStyle.layoutFlexColumnCenter
   },
   form: { width: "100%", ...layoutStyle.layoutFlexColumnCenter },
-  logo: {
-    marginBottom: 30
-  },
+  logo: {},
   input: {
-    marginBottom: PADDING_BETWEEN_COMPONENT
+    marginBottom: PADDING_BETWEEN_COMPONENT,
+    paddingHorizontal: 0
+  },
+  inputTextContainerStyle: {
+    borderBottomColor: colors.grey0
   },
   inputLabelStyle: {
     color: colors.grey2
@@ -31,11 +33,10 @@ export default StyleSheet.create({
     color: colors.grey0
   },
   buttonContainer: {
-    width: "100%",
-    paddingLeft: 10,
-    paddingRight: 10
+    width: "100%"
   },
   buttonInside: {
+    borderRadius: 50,
     backgroundColor: "#ffffff"
   },
   buttonTitle: {

@@ -1,6 +1,5 @@
 import React from "react";
 
-import { AsyncStorage } from "react-native";
 import {
   createAppContainer,
   createSwitchNavigator,
@@ -15,25 +14,10 @@ import HomeScreen from "./private/home/home.screen";
 import AccountScreen from "./private/account/account.screen";
 import LoginScreen from "./public/login/login.screen";
 
+import { AuthComponent } from "../components/auth/auth.component";
 import { BottomTabNavigator } from "../components/tool_bar/bottom_tab_navigator.component";
 
 import { sizes, colors } from "../styles/theme.constant";
-
-const AuthLoadingScreen: React.FC<any> = props => {
-  React.useEffect(() => {
-    async function _bootstrapAsync() {
-      const userToken = await AsyncStorage.getItem("userToken");
-
-      // This will switch to the App screen or Auth screen and this loading
-      // screen will be unmounted and thrown away.
-      props.navigation.navigate(userToken ? "Home" : "Auth");
-    }
-
-    _bootstrapAsync();
-  }, []);
-
-  return <></>;
-};
 
 const MainNavigator = createBottomTabNavigator(
   {
@@ -84,14 +68,17 @@ const MainNavigator = createBottomTabNavigator(
 
 const AuthStack = createStackNavigator({
   SignIn: {
-    screen: LoginScreen
+    screen: LoginScreen,
+    navigationOptions: {
+      header: null
+    }
   }
 });
 
 export default createAppContainer(
   createSwitchNavigator(
     {
-      AuthLoading: AuthLoadingScreen,
+      AuthLoading: AuthComponent,
       App: MainNavigator,
       Auth: AuthStack
     },
