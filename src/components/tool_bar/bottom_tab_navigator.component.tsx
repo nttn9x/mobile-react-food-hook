@@ -78,7 +78,7 @@ function useTransform() {
   useEffect(() => {
     Animated.timing(transform, {
       toValue: 1,
-      duration: 300
+      duration: 500
     }).start();
   }, []);
 
@@ -88,7 +88,7 @@ function useTransform() {
   });
 }
 
-const Tab = React.memo(function TabComponent({
+function TabComponent({
   route,
   routeIndex,
   renderIcon,
@@ -103,6 +103,17 @@ const Tab = React.memo(function TabComponent({
   const isRouteActive = routeIndex === activeRouteIndex;
   const tintColor = isRouteActive ? activeTintColor : inactiveTintColor;
 
+  const scale = useRef(new Animated.Value(1)).current;
+
+  useEffect(() => {
+    if (isRouteActive) {
+      Animated.sequence([
+        Animated.timing(scale, { toValue: 1.2, duration: 300 }),
+        Animated.timing(scale, { toValue: 1, duration: 150 })
+      ]).start();
+    }
+  }, [isRouteActive]);
+
   return (
     <TouchableOpacity
       key={routeIndex}
@@ -115,12 +126,20 @@ const Tab = React.memo(function TabComponent({
       }}
       accessibilityLabel={getAccessibilityLabel({ route })}
     >
-      {renderIcon({ route, focused: isRouteActive, tintColor })}
+      <Animated.View
+        style={[
+          {
+            transform: [{ scale }]
+          }
+        ]}
+      >
+        {renderIcon({ route, focused: isRouteActive, tintColor })}
+      </Animated.View>
 
       <Text style={styles.tabButtonText}>{getLabelText({ route })}</Text>
     </TouchableOpacity>
   );
-});
+}
 
 const BottomTabNavigator: React.FC<any> = ({ navigation, ...rest }) => {
   const { routes, index: activeRouteIndex } = navigation.state;
@@ -140,9 +159,9 @@ const BottomTabNavigator: React.FC<any> = ({ navigation, ...rest }) => {
       ]}
     >
       {routes.map((route, routeIndex) => (
-        <Tab
-          key={routeIndex}
+        <TabComponent
           {...rest}
+          key={routeIndex}
           route={route}
           routeIndex={routeIndex}
           activeRouteIndex={activeRouteIndex}

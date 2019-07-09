@@ -1,9 +1,7 @@
 import React from "react";
-import { AsyncStorage, Text, KeyboardAvoidingView } from "react-native";
-import { Input } from "react-native-elements";
+import { AsyncStorage, KeyboardAvoidingView, View, Image } from "react-native";
+import { Input, Button } from "react-native-elements";
 import { ViewAnimatedFade } from "../../../animations/view_fade/fade.animations";
-
-import ButtonComponent from "../../../components/button/action.button";
 
 import styles from "./login.style";
 
@@ -11,7 +9,7 @@ interface LoginScreenProps {
   navigation: any;
 }
 
-const LoginScreen: React.FC<any> = props => {
+const LoginScreen: React.FC<LoginScreenProps> = props => {
   async function _signInAsync() {
     await AsyncStorage.setItem("userToken", "abc");
 
@@ -20,22 +18,38 @@ const LoginScreen: React.FC<any> = props => {
 
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
-      <ViewAnimatedFade style={styles.form}>
-        <Text style={styles.text}>Hello</Text>
-        <Input containerStyle={styles.input} label="Username" shake={true} />
-        <Input
-          secureTextEntry={true}
-          containerStyle={styles.input}
-          label="Password"
-          shake={true}
-        />
+      <View style={styles.background}>
+        <ViewAnimatedFade style={styles.form}>
+          <Image
+            style={styles.logo}
+            source={require("../../../styles/images/logo.png")}
+          />
+          <Input
+            containerStyle={styles.input}
+            labelStyle={styles.inputLabelStyle}
+            inputStyle={styles.inputTextStyleStyle}
+            label="Username"
+            shake={true}
+          />
+          <Input
+            secureTextEntry={true}
+            labelStyle={styles.inputLabelStyle}
+            containerStyle={styles.input}
+            inputStyle={styles.inputTextStyleStyle}
+            label="Password"
+            shake={true}
+          />
 
-        <ButtonComponent
-          containerStyle={styles.button}
-          label={"Login"}
-          onPress={_signInAsync}
-        />
-      </ViewAnimatedFade>
+          <Button
+            title="Login"
+            type="solid"
+            onPress={_signInAsync}
+            containerStyle={styles.buttonContainer}
+            buttonStyle={styles.buttonInside}
+            titleStyle={styles.buttonTitle}
+          />
+        </ViewAnimatedFade>
+      </View>
     </KeyboardAvoidingView>
   );
 };

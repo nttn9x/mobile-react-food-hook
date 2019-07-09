@@ -84,10 +84,7 @@ const MainNavigator = createBottomTabNavigator(
 
 const AuthStack = createStackNavigator({
   SignIn: {
-    screen: LoginScreen,
-    navigationOptions: {
-      header: null
-    }
+    screen: LoginScreen
   }
 });
 

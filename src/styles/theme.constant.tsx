@@ -1,6 +1,12 @@
 const colors = {
   secondary: "#536DFE",
-  primary: "#673AB7"
+  primary: "#673AB7",
+  grey0: "#fafafa",
+  grey1: "#f5f5f5",
+  grey2: "#eeeeee",
+  grey3: "#e0e0e0",
+  grey4: "#bdbdbd",
+  grey5: "#9e9e9e"
 };
 
 const sizes = {
