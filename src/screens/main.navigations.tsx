@@ -4,9 +4,9 @@ import { AsyncStorage } from "react-native";
 import {
   createAppContainer,
   createSwitchNavigator,
-  createBottomTabNavigator,
   createStackNavigator
 } from "react-navigation";
+import { createBottomTabNavigator } from "react-navigation-tabs";
 
 import { Icon } from "react-native-elements";
 
@@ -14,6 +14,10 @@ import BBCScreen from "./private/bbc/App";
 import HomeScreen from "./private/home/home.screen";
 import AccountScreen from "./private/account/account.screen";
 import LoginScreen from "./public/login/login.screen";
+
+import { BottomTabNavigator } from "../components/tool_bar/bottom_tab_navigator.component";
+
+import { sizes, colors } from "../styles/theme.constant";
 
 const AuthLoadingScreen: React.FC<any> = props => {
   React.useEffect(() => {
@@ -31,43 +35,50 @@ const AuthLoadingScreen: React.FC<any> = props => {
   return <></>;
 };
 
-const getTabBarIcon = (navigation, focused, tintColor) => {
-  const { routeName } = navigation.state;
-  let iconName;
-  let typeName;
-  if (routeName === "Home") {
-    iconName = "home";
-  } else if (routeName === "BBC") {
-    iconName = "folder-video";
-    typeName = "entypo";
-  } else if (routeName === "Account") {
-    iconName = "account";
-    typeName = "material-community";
-  }
-
-  // You can return any component that you like here!
-  return <Icon type={typeName} name={iconName} size={25} color={tintColor} />;
-};
-
 const MainNavigator = createBottomTabNavigator(
   {
     Home: {
-      screen: HomeScreen
+      screen: HomeScreen,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => (
+          <Icon name="home" size={sizes.iconNav} color={tintColor} />
+        )
+      }
     },
-    BBC: { screen: BBCScreen },
-    Account: { screen: AccountScreen }
+    BBC: {
+      screen: BBCScreen,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => (
+          <Icon
+            type="entypo"
+            name="folder-video"
+            size={sizes.iconNav}
+            color={tintColor}
+          />
+        )
+      }
+    },
+    Account: {
+      screen: AccountScreen,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => (
+          <Icon
+            type="material-community"
+            name="account"
+            size={sizes.iconNav}
+            color={tintColor}
+          />
+        )
+      }
+    }
   },
   {
-    defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, tintColor }) =>
-        getTabBarIcon(navigation, focused, tintColor)
-    }),
     tabBarOptions: {
       showLabel: false,
-      activeTintColor: "tomato",
+      activeTintColor: colors.primary,
       inactiveTintColor: "gray"
     },
-    lazy: true
+    tabBarComponent: props => <BottomTabNavigator {...props} />
   }
 );
 

@@ -1,6 +1,8 @@
 import React, { useEffect, ReactNode } from "react";
 import { Animated } from "react-native";
 
+import { animated } from "../../styles/theme.constant";
+
 const state = {
   fadeAnim: new Animated.Value(0) // Initial value for opacity: 0
 };
@@ -17,7 +19,7 @@ const ViewAnimatedFade: React.FC<FadeInViewProps> = props => {
       state.fadeAnim, // The animated value to drive
       {
         toValue: 1, // Animate to opacity: 1 (opaque)
-        duration: 300 // Make it take a while
+        duration: animated.duration // Make it take a while
       }
     ).start(); // Starts the animation
   }, []);

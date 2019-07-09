@@ -17,7 +17,8 @@ const sizes = {
   title: 18,
   header: 16,
   body: 14,
-  caption: 12
+  caption: 12,
+  iconNav: 25
 };
 
 const fonts = {
@@ -44,4 +45,8 @@ const fonts = {
   }
 };
 
-export { colors, sizes, fonts };
+const animated = {
+  duration: 300
+};
+
+export { colors, sizes, fonts, animated };

@@ -17,8 +17,8 @@ export default StyleSheet.create({
   form: { width: "100%", ...layoutStyle.layoutFlexColumnCenter },
   text: {
     fontWeight: "bold",
-    fontSize: 40,
-    marginBottom: 100
+    fontSize: 30,
+    marginBottom: 30
   },
   input: {
     marginBottom: PADDING_BETWEEN_COMPONENT

@@ -1,4 +1,4 @@
 export const PRIMARY_COLOR = "#673AB7";
 
-export const PADDING_BETWEEN_COMPONENT = 40;
+export const PADDING_BETWEEN_COMPONENT = 20;
 export const PADDING_INSIDE_SCREEN = 60;
