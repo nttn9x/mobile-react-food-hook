@@ -9,7 +9,7 @@ import { colors } from "../../../styles/theme.constant";
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: colors.primary,
+    // backgroundColor: colors.primary,
     flex: 1
   },
   background: {
@@ -20,11 +20,13 @@ export default StyleSheet.create({
   form: { width: "100%", ...layoutStyle.layoutFlexColumnCenter },
   logo: {},
   input: {
+    borderRadius: 50,
     marginBottom: PADDING_BETWEEN_COMPONENT,
-    paddingHorizontal: 0
+    paddingHorizontal: 20,
+    backgroundColor: `rgba(${colors.grey2_rgba}, 0.3)`
   },
   inputTextContainerStyle: {
-    borderBottomColor: colors.grey0
+    borderBottomColor: "transparent"
   },
   inputLabelStyle: {
     color: colors.grey2
@@ -37,10 +39,10 @@ export default StyleSheet.create({
   },
   buttonInside: {
     borderRadius: 50,
-    backgroundColor: "#ffffff"
+    backgroundColor: colors.primary
   },
   buttonTitle: {
-    color: colors.primary
+    color: "#ffffff"
   }
 });
 

@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { StyleSheet, Text, FlatList } from "react-native";
 
 import { ViewAnimatedFade } from "../../../animations/view_fade/fade.animations";
+import { HomeHeaderComponent } from "./home-header.component";
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
+    flex: 1
+  },
+  flatlist: {
+    flex: 1
   }
 });
 
@@ -23,24 +24,6 @@ const HomeScreen: React.FC<HomeScreenProps> = props => {
     { name: "aab" },
     { name: "b" },
     { name: "b" },
-    { name: "b" },
-    { name: "a" },
-    { name: "aab" },
-    { name: "b" },
-    { name: "b" },
-    { name: "b" },
-    { name: "a" },
-    { name: "aab" },
-    { name: "b" },
-    { name: "b" },
-    { name: "b" },
-    { name: "a" },
-    { name: "aab" },
-    { name: "b" },
-    { name: "b" },
-    { name: "b" },
-    { name: "a" },
-    { name: "aab" },
     { name: "b" }
   ]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -66,6 +49,10 @@ const HomeScreen: React.FC<HomeScreenProps> = props => {
     return index.toString();
   }
 
+  function _renderHeader() {
+    return <HomeHeaderComponent />;
+  }
+
   function _renderFooter() {
     return loading ? (
       <Text
@@ -84,6 +71,7 @@ const HomeScreen: React.FC<HomeScreenProps> = props => {
   return (
     <ViewAnimatedFade style={styles.container}>
       <FlatList
+        style={styles.flatlist}
         data={datas}
         keyExtractor={_keyExtractor}
         renderItem={({ item }: any) => (
@@ -100,7 +88,7 @@ const HomeScreen: React.FC<HomeScreenProps> = props => {
         )}
         onEndReached={handleLoadMore}
         onEndReachedThreshold={0.2}
-        ListHeaderComponent={() => <Text style={{ height: 400 }}>ahihihi</Text>}
+        ListHeaderComponent={_renderHeader}
         ListFooterComponent={_renderFooter}
       />
     </ViewAnimatedFade>

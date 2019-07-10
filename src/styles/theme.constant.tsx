@@ -1,9 +1,12 @@
 const colors = {
   secondary: "#00BCD4",
+  darkPrimary: "#388E3C",
   primary: "#009d3b",
   grey0: "#fafafa",
   grey1: "#f5f5f5",
+  grey1_rgba: "245,245,245",
   grey2: "#eeeeee",
+  grey2_rgba: "238,238,238",
   grey3: "#e0e0e0",
   grey4: "#bdbdbd",
   grey5: "#9e9e9e"
@@ -14,7 +17,8 @@ const sizes = {
   base: 16,
   font: 14,
   radius: 6,
-  padding: 25,
+  paddingLayout: 25,
+  paddingComponent: 15,
 
   // font sizes
   h1: 26,

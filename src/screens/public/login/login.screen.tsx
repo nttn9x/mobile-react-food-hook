@@ -2,8 +2,10 @@ import React from "react";
 import { AsyncStorage, KeyboardAvoidingView, View, Image } from "react-native";
 import { Input, Button } from "react-native-elements";
 import { ViewAnimatedFade } from "../../../animations/view_fade/fade.animations";
+import LinearGradientComponent from "../../../components/linear_gradient/linear_gradient.component";
 
 import styles from "./login.style";
+import { colors } from "../../../styles/theme.constant";
 
 interface LoginScreenProps {
   navigation: any;
@@ -19,6 +21,9 @@ const LoginScreen: React.FC<LoginScreenProps> = props => {
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
       <ViewAnimatedFade style={styles.background}>
+        <LinearGradientComponent
+          style={{ top: 0, left: 0, position: "absolute", bottom: 0, right: 0 }}
+        />
         <View style={styles.form}>
           <Image
             style={styles.logo}
@@ -29,7 +34,8 @@ const LoginScreen: React.FC<LoginScreenProps> = props => {
             containerStyle={styles.input}
             labelStyle={styles.inputLabelStyle}
             inputStyle={styles.inputTextStyleStyle}
-            label="Username"
+            placeholder="Username"
+            placeholderTextColor={colors.grey2}
             shake={true}
           />
           <Input
@@ -38,7 +44,8 @@ const LoginScreen: React.FC<LoginScreenProps> = props => {
             labelStyle={styles.inputLabelStyle}
             containerStyle={styles.input}
             inputStyle={styles.inputTextStyleStyle}
-            label="Password"
+            placeholder="Password"
+            placeholderTextColor={colors.grey2}
             shake={true}
           />
 
