@@ -4,15 +4,14 @@ import { Divider, Icon } from "react-native-elements";
 
 import { CardComponent } from "../../../components/card/card.component";
 
-import layout from "../../../styles/layout.style";
+import HeaderImage from "../../../styles/images/header.jpg";
 import { sizes, colors } from "../../../styles/theme.constant";
 
 const styles = StyleSheet.create({
   imgBackground: {
     height: 200,
     marginBottom: 80,
-    paddingHorizontal: sizes.paddingLayout,
-    backgroundColor: "blue"
+    paddingHorizontal: sizes.paddingLayout
   },
   title: {
     paddingTop: sizes.paddingLayout,
@@ -46,10 +45,7 @@ const styles = StyleSheet.create({
 const HomeHeaderComponent: React.FC<any> = props => {
   return (
     <>
-      <ImageBackground
-        source={require("../../../styles/images/header.jpg")}
-        style={styles.imgBackground}
-      >
+      <ImageBackground source={HeaderImage} style={styles.imgBackground}>
         <Text style={styles.title}>
           <Text>Good Afternoon, </Text>
           <Text style={styles.fullname}>Nguyen</Text>
